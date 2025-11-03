@@ -202,6 +202,7 @@ class P2P {
             if (transaction.timestamp > Math.floor(Date.now() / 1000) + timestampRange ||
                 (now && transaction.timestamp < timestampRange + this.pendingTxs.length * (maxVoteTime / 1000)) ||
                 transaction.amount < fee ||
+                transaction.amount != Math.floor(transaction.amount) ||
                 !this.chain.accounts[transaction.from] ||
                 this.chain.accounts[transaction.from].balance < transaction.amount ||
                 (now && transaction.nonce != this.chain.accounts[transaction.from].nonce)) valid = false;
